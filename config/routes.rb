@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :projects
+  resources :blogs
+  resources :topics
   devise_for :users, controllers: { 
     registrations: 'users/registrations', 
     sessions: 'users/sessions' 
