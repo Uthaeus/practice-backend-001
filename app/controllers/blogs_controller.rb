@@ -1,5 +1,7 @@
 class BlogsController < ApplicationController
   before_action :set_blog, only: %i[ show update destroy ]
+  before_action :authenticate_user!, only: [:create, :update, :destroy]
+  respond_to :json
 
   # GET /blogs
   def index
@@ -46,6 +48,6 @@ class BlogsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def blog_params
-      params.require(:blog).permit(:title, :body, :Topic_id)
+      params.require(:blog).permit(:title, :body, :topic_id)
     end
 end

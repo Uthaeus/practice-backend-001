@@ -1,5 +1,7 @@
 class ProjectsController < ApplicationController
   before_action :set_project, only: %i[ show update destroy ]
+  before_action :authenticate_user!, only: [:create, :update, :destroy]
+  respond_to :json
 
   # GET /projects
   def index
